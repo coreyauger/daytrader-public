@@ -101,9 +101,17 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav #fh5co-logo {
   font-size: 24px;
   margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   text-transform: uppercase;
   font-weight: bold;
+}
+.logo{
+  width: 32px;
+  height: 32px;
 }
 .fh5co-nav a {
   padding: 5px 10px;
