@@ -104,29 +104,29 @@
 				</div>
 				<div class="col-md-6 animate-box">
 					<h3>Get In Touch</h3>
-					<form action="#">
+					<form id="contactForm">
 						<div class="row form-group">
 							<div class="col-md-6">
 								<!-- <label for="fname">First Name</label> -->
-								<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+								<input type="text" name="fname" id="fname" class="form-control" placeholder="Your firstname">
 							</div>
 							<div class="col-md-6">
 								<!-- <label for="lname">Last Name</label> -->
-								<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+								<input type="text" name="lname" id="lname" class="form-control" placeholder="Your lastname">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<!-- <label for="email">Email</label> -->
-								<input type="text" id="email" class="form-control" placeholder="Your email address">
+								<input type="email" name="email" id="email" class="form-control" placeholder="Your email address">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<!-- <label for="subject">Subject</label> -->
-								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+								<input type="text" name="subject" id="subject" class="form-control" placeholder="Your subject of this message">
 							</div>
 						</div>
 
@@ -137,7 +137,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Send Message" class="btn btn-primary">
+							<input id="contactSubmit" type="submit" value="Send Message" class="btn btn-primary">
 						</div>
 
 					</form>		
@@ -234,6 +234,43 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
+	<script>
+			$.fn.serializeObject = function()
+			{
+			var o = {};
+			var a = this.serializeArray();
+			$.each(a, function() {
+				if (o[this.name]) {
+					if (!o[this.name].push) {
+						o[this.name] = [o[this.name]];
+					}
+					o[this.name].push(this.value || '');
+				} else {
+					o[this.name] = this.value || '';
+				}
+			});
+			return o;
+			};
+		$(function(){
+			var $form = $('#contactForm'),
+			url = 'https://script.google.com/macros/s/AKfycbwlFaBM4-VXUIR-pwqMpHxjpK2WKenIUJiqvfgMoSUziCOV1WWZ/exec'
+	
+			$('#contactSubmit').on('click', function(e) {
+				e.preventDefault();
+				var jqxhr = $.ajax({
+					url: url,
+					method: "GET",
+					dataType: "json",
+					data: $form.serializeObject()
+				}).success(function(){
+					// do something
+					console.log("weeeee...", $form.serializeObject());
+					$form.html("<h2>Contact request delivered.</h2>")
+				});
+			})
+		})
+	
+		</script>
 	</body>
 </html>
 <!-- $end.html{ --> <!-- } -->
