@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>daytrader.ai &mdash; Next generation financial technology</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
-    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+    <meta name="description" content="machine learning applied to intraday trading" />
+    <meta name="keywords" content="machine learning intraday trading day trader rnn deep learning" />
     <meta name="author" content="daytrader.ai" />
 
     <!-- Facebook and Twitter integration -->
@@ -39,6 +39,17 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    
+    <script>
+        $(function(){
+            $nav = $('#nav')
+			var split = window.location.pathname.split('/')
+			var page = split[split.length-1].replace(".html","")			
+			$nav.children('li#'+page).toggleClass('active')            
+        })
+    </script>
 </head>
 <!-- } -->
 	<body>
@@ -57,11 +68,11 @@
                     </div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
-                    <ul>
-                        <li class="active"><a href="index.html">Home</a></li>
+                    <ul id="nav">
+                        <li id="index"><a href="index.html">Home</a></li>
                         <!--<li><a href="work.html">Work</a></li>-->
-                        <li><a href="about.html">About</a></li>						
-                        <li><a href="contact.html">Contact</a></li>
+                        <li id="about"><a href="about.html">About</a></li>						
+                        <li id="contact"><a href="contact.html">Contact</a></li>
                         <!--<li class="btn-cta"><a href="#"><span>Login</span></a></li>-->
                     </ul>
                 </div>

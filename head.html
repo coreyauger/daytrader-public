@@ -37,4 +37,15 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    
+    <script>
+        $(function(){
+            $nav = $('#nav')
+			var split = window.location.pathname.split('/')
+			var page = split[split.length-1].replace(".html","")			
+			$nav.children('li#'+page).toggleClass('active')            
+        })
+    </script>
 </head>
