@@ -44,7 +44,8 @@
         $(function(){
             $nav = $('#nav')
 			var split = window.location.pathname.split('/')
-			var page = split[split.length-1].replace(".html","")			
+			var page = split[split.length-1].replace(".html","")
+            if(page == "")page = "index"		
 			$nav.children('li#'+page).toggleClass('active')            
         })
     </script>
